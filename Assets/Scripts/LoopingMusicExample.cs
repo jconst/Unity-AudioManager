@@ -14,7 +14,7 @@ public class LoopingMusicExample : MonoBehaviour
     }
 
     void Update() {
-        guiText.text = "BG Music " + (snd.playing ? "▐▐" : "►");
+        guiText.text = "Looping Music " + (snd.playing ? "▐▐" : "►");
         int progressTo20 = (int)(snd.progress * 20f);
         progressBar.GetComponent<GUIText>().text = "|"+(new string('|', progressTo20))+(new string(' ', 20-progressTo20))+"|";
     }

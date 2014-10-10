@@ -73,7 +73,6 @@ public class Sound
     }
 
     public void Finish() {
-        Debug.Log("Finish");
         PlayOrPause(false, true);
         if (callback != null) 
             callback(this);
