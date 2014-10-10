@@ -63,21 +63,17 @@ public class Sound
                 interruptedSounds = new HashSet<Sound>(audioManager.sounds.Where(snd => snd.playing &&
                                                                                         snd != this));
             }
-            interruptedSounds.ToList()
-                             .ForEach(sound => sound.PlayOrPause(!play, false));
+            interruptedSounds.ToList().ForEach(sound => sound.PlayOrPause(!play, false));
         }
-        if (play) {
-             if (!source.isPlaying) {
-                source.Play();
-            }
+        if (play && !source.isPlaying) {
+            source.Play();
         } else {
             source.Pause();
-            if (pauseOthers)
-                interruptedSounds.Clear();
         }
     }
 
     public void Finish() {
+        Debug.Log("Finish");
         PlayOrPause(false, true);
         if (callback != null) 
             callback(this);
