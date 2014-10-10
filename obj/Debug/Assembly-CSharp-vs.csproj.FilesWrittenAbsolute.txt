@@ -1,0 +1,4 @@
+/Users/josephconstan/Code/Unity/ToolPrototype/Temp/bin/Debug/Assembly-CSharp.dll.mdb
+/Users/josephconstan/Code/Unity/ToolPrototype/Temp/bin/Debug/Assembly-CSharp.dll
+/Users/josephconstan/Code/Unity/ToolPrototype/obj/Debug/Assembly-CSharp.dll
+/Users/josephconstan/Code/Unity/ToolPrototype/obj/Debug/Assembly-CSharp.dll.mdb
