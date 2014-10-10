@@ -9,17 +9,20 @@ public class LoopingMusicExample : MonoBehaviour
     public GUIText progressBar;
 
     void Start() {
-        AudioManager am = Camera.main.GetComponent<AudioManager>();
-        snd = am.NewSound("Dungeon", loop: true);
+        // Set the param "loop" to true for background music & other looping sounds
+        snd = AudioManager.Main.NewSound("Dungeon", loop: true);
     }
 
     void Update() {
         guiText.text = "Looping Music " + (snd.playing ? "▐▐" : "►");
+
+        // Use the Sound class's "progress" property to see what % of the sound has been played so far:
         int progressTo20 = (int)(snd.progress * 20f);
         progressBar.GetComponent<GUIText>().text = "|"+(new string('|', progressTo20))+(new string(' ', 20-progressTo20))+"|";
     }
 
     void OnMouseDown() {
+        // Toggling play/pause is as simple as setting a bool!
         snd.playing = !snd.playing;
     }
 }

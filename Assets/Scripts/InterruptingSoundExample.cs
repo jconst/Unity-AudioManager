@@ -10,11 +10,13 @@ public class InterruptingSoundExample : MonoBehaviour
     public GameObject progressBar;
 
     void Start() {
+        // Set the "interrupts" param to true to interrupt other sounds when this one plays
         snd = AudioManager.Main.NewSound("Secret", interrupts: true);
     }
 
     void Update() {
         guiText.text = "Interrupting Sound " + (snd.playing ? "▐▐" : "►");
+        
         int progressTo20 = (int)(snd.progress * 20f);
         progressBar.GetComponent<GUIText>().text = "|"+(new string('|', progressTo20))+(new string(' ', 20-progressTo20))+"|";
     }
