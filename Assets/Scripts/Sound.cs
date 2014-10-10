@@ -17,6 +17,8 @@ public class Sound
     private HashSet<Sound> interruptedSounds =
         new HashSet<Sound> ();
 
+    /// returns a float from 0.0 to 1.0 representing how much
+    /// of the sound has been played so far
     public float progress {
         get {
             if (source == null || clip == null)
@@ -25,12 +27,18 @@ public class Sound
         }
     }
 
+    /// returns true if the sound has finished playing
+    /// will always be false for looping sounds
     public bool finished {
         get {
             return !loop && progress >= 1f;
         }
     }
 
+    /// returns true if the sound is currently playing,
+    /// false if it is paused or finished
+    /// can be set to true or false to play/pause the sound
+    /// will register the sound before playing
     public bool playing {
         get {
             return source != null && source.isPlaying;
@@ -43,6 +51,8 @@ public class Sound
         }
     }
 
+    /// Try to avoid calling this directly
+    /// Use AudioManager.NewSound instead
     public Sound(string newName) {
         name = newName;
         clip = (AudioClip)Resources.Load(name, typeof(AudioClip));
@@ -57,6 +67,8 @@ public class Sound
             Finish();
     }
 
+    /// Try to avoid calling this directly
+    /// Use the Sound.playing property instead
     public void PlayOrPause(bool play, bool pauseOthers) {
         if (pauseOthers) {
             if (play) {
@@ -72,7 +84,9 @@ public class Sound
         }
     }
 
+    /// performs necessary actions when a sound finishes
     public void Finish() {
+        finished = true;
         PlayOrPause(false, true);
         if (callback != null) 
             callback(this);
@@ -80,6 +94,7 @@ public class Sound
         source = null;
     }
 
+    /// Reset the sound to its beginning
     public void Reset() {
         source.time = 0f;
     }
