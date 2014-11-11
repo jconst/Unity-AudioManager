@@ -86,7 +86,6 @@ public class Sound
 
     /// performs necessary actions when a sound finishes
     public void Finish() {
-        finished = true;
         PlayOrPause(false, true);
         if (callback != null) 
             callback(this);
